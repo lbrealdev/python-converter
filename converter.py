@@ -47,7 +47,7 @@ for markdown_file in markdown_files:
         print(f"Error converting {markdown_file}: {e}")
         sys.exit(1)
 
-print("\nSource markdown files:")
+print("Source markdown files:")
 for input_md in source_md_files:
     print(input_md)
 
