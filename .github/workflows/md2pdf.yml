@@ -27,3 +27,8 @@ jobs:
         with:
           args: "--help"
 
+      - name: Run converter
+        run: |
+          python converter.py ${{ inputs.markdown-source-dir }}
+
+
