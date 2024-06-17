@@ -1,7 +1,6 @@
 import sys
 from pathlib import Path
 import pypandoc
-from pypandoc.pandoc_download import download_pandoc
 
 
 if len(sys.argv) < 2:
@@ -38,7 +37,6 @@ for markdown_file in markdown_files:
     output_pdf_files.append(pdf_output_path)
 
     try:
-        download_pandoc()
         pypandoc.convert_file(
             str(markdown_file),
             'pdf',
