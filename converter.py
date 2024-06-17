@@ -45,6 +45,7 @@ for markdown_file in markdown_files:
         )
     except Exception as e:
         print(f"Error converting {markdown_file}: {e}")
+        sys.exit(1)
 
 print("Source markdown files:")
 for input_md in source_md_files:
