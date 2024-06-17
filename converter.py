@@ -34,6 +34,8 @@ for markdown_file in markdown_files:
         #    outputfile=str(pdf_file), 
         #    extra_args=['--pdf-engine=pdflatex']
         #)
+        pdf_output_path.parent.mkdir(parents=True, exist_ok=True)
+        pdf_output_path.touch(exist_ok=True)
         print(f"{markdown_file} -> {pdf_output_path}")
     except Exception as e:
         print(f"Error converting {markdown_file}: {e}")
