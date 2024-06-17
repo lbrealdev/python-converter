@@ -38,6 +38,6 @@ jobs:
 
       - name: Run converter
         run: |
-          python converter.py ${{ inputs.markdown-source-dir }}
+          python3 converter.py ${{ inputs.markdown-source-dir }}
 
 
