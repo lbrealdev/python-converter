@@ -20,28 +20,24 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      #- name: Set up Python
-      #  uses: actions/setup-python@v5
-      #  with:
-      #    python-version: '3.12'
-
-      #- name: Pandoc core image
-      #  uses: docker://pandoc/core:2.9
-      #  with:
-      #    args: "--help"
-
-      - name: Install pypandoc
+      - name: Setup pypandoc
         run: |
           apk add python3 texmf-dist texlive
           python3 --version
           python3 -m pip install pypandoc
 
-      - name: Run python converter
+      - name: Python converter
         run: |
           python3 converter.py ${{ inputs.markdown-source-dir }}
 
       #- name: Run pandoc
       #  run: |
       #    pandoc README.md -o README.pdf
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: pdf
+          path: test/_output
 
 
