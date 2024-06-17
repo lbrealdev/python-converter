@@ -1,6 +1,6 @@
 import sys
 from pathlib import Path
-# import pypandoc
+import pypandoc
 
 
 if len(sys.argv) < 2:
@@ -30,20 +30,22 @@ for markdown_file in markdown_files:
     relative_path = markdown_file.relative_to(SOURCE_PATH_TO_MD)
     pdf_output_path = DESTINATION_PATH_TO_PDF / relative_path.with_suffix(".pdf")
 
-    try:
-        # pypandoc.convert_file(
-        #    str(markdown_file),
-        #    'pdf',
-        #    outputfile=str(pdf_file),
-        #    extra_args=['--pdf-engine=pdflatex']
-        # )
-        pdf_output_path.parent.mkdir(parents=True, exist_ok=True)
-        pdf_output_path.touch(exist_ok=True)
+    pdf_output_path.parent.mkdir(parents=True, exist_ok=True)
+    #pdf_output_path.touch(exist_ok=True)
 
-        source_md_files.append(markdown_file)
-        output_pdf_files.append(pdf_output_path)
+    source_md_files.append(markdown_file)
+    output_pdf_files.append(pdf_output_path)
+
+    try:
+        pypandoc.convert_file(
+            str(markdown_file),
+            'pdf',
+            outputfile=str(pdf_output_path),
+            extra_args=['--pdf-engine=pdflatex']
+        )
     except Exception as e:
         print(f"Error converting {markdown_file}: {e}")
+        sys.exit(1)
 
 print("Source markdown files:")
 for input_md in source_md_files:
