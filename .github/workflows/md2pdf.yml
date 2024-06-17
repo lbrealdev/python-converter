@@ -32,8 +32,8 @@ jobs:
 
       - name: Install pypandoc
         run: |
-          apk --no-cache add python
-          python --version
+          apk --no-cache add python3
+          python3 --version
           #python -m pip install pypandoc
 
       #- name: Run converter
