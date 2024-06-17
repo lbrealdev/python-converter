@@ -32,11 +32,12 @@ jobs:
 
       - name: Install pypandoc
         run: |
-          apk --no-cache add python pip
+          apk --no-cache add python
+          python --version
           #python -m pip install pypandoc
 
-      - name: Run converter
-        run: |
-          python converter.py ${{ inputs.markdown-source-dir }}
+      #- name: Run converter
+      #  run: |
+      #    python converter.py ${{ inputs.markdown-source-dir }}
 
 
