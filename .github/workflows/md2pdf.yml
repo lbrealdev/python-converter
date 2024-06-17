@@ -36,8 +36,8 @@ jobs:
           python3 --version
           python3 -m pip install pypandoc
 
-      #- name: Run converter
-      #  run: |
-      #    python converter.py ${{ inputs.markdown-source-dir }}
+      - name: Run converter
+        run: |
+          python converter.py ${{ inputs.markdown-source-dir }}
 
 
