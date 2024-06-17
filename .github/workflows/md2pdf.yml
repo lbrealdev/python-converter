@@ -20,10 +20,10 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Set up Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: '3.12'
+      #- name: Set up Python
+      #  uses: actions/setup-python@v5
+      #  with:
+      #    python-version: '3.12'
 
       #- name: Pandoc core image
       #  uses: docker://pandoc/core:2.9
@@ -32,8 +32,7 @@ jobs:
 
       - name: Install pypandoc
         run: |
-          #python3.12 -m pip install pypandoc
-          ls -lthr
+          apk install python
 
       - name: Run converter
         run: |
