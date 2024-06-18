@@ -43,7 +43,7 @@ jobs:
 
       - name: Install python dependencies
         run: |
-          pip install pypandoc
+          python -m pip install pypandoc
 
       - name: Run pypandoc
         run: |
