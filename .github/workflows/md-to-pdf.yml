@@ -37,7 +37,7 @@ jobs:
       - name: Run pandoc
         run: |
           pandoc README.md --from markdown --to html -o README.html
-          pandoc README.md --from markdown --to pdf -o README.pdf
+          pandoc README.md --from markdown --to pdf -o README.pdf --pdf-engine=xelatex
 
       - name: Upload artifacts
         if: inputs.upload-artifact
