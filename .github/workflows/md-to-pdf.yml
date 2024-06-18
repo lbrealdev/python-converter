@@ -21,26 +21,26 @@ jobs:
     name: Pandoc - markdown to pdf
     runs-on: ubuntu-latest
     container:
-      image: pandoc/core:2.9
+      image: pandoc/latex:2.9
       options: --cpus 1
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Setup pypandoc
+      - name: Setup python
         run: |
-          apk add python3 texlive
+          apk add python3
           python3 -m pip install pypandoc
 
-      - name: Python converter
+      - name: Run pypandoc
         run: |
           python3 converter.py ${{ inputs.markdown-source-dir }}
 
       - name: Run pandoc
         run: |
           pandoc README.md --from markdown --to html -o README.html
-          pandoc README.md --from markdown --to pdf -o README.pdf --pdf-engine=pdflatex
+          pandoc README.md --from markdown --to pdf -o README.pdf
 
       - name: Upload artifacts
         if: inputs.upload-artifact
