@@ -43,13 +43,11 @@ jobs:
 
       - name: Install python dependencies
         run: |
-          python --version
-          python -m pip list
+          pip install pypandoc
 
-      #- name: Run pypandoc
-      #  run: |
-      #    . pypandoc/bin/activate
-      #    python3 converter.py ${{ inputs.markdown-source-dir }}
+      - name: Run pypandoc
+        run: |
+          python3 converter.py ${{ inputs.markdown-source-dir }}
 
       - name: Run pandoc
         run: |
