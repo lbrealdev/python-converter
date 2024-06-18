@@ -36,13 +36,16 @@ jobs:
 
       - name: Run pandoc
         run: |
-          pandoc README.md -o README.html
+          pandoc README.md --from markdown --to html -o README.html
+          pandoc README.md --from markdown --to pdf -o README.pdf
 
       - name: Upload artifacts
         if: inputs.upload-artifact
         uses: actions/upload-artifact@v4
         with:
           name: pandoc-artifact
-          path: README.html
+          path: |
+            README.html
+            README.pdf
 
 
