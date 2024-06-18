@@ -41,7 +41,7 @@ jobs:
         run: |
           python3 -m venv pypandoc
            . pypandoc/bin/activate
-          pip install pypandoc
+          pip install pypandoc pypandoc-binary
           python3 converter.py ${{ inputs.markdown-source-dir }}
 
       - name: Run pandoc
