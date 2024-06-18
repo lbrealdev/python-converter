@@ -42,7 +42,7 @@ jobs:
         if: inputs.upload-artifact
         uses: actions/upload-artifact@v4
         with:
-          name: pdf
-          path: "*.html"
+          name: pandoc-artifact
+          path: README.html
 
 
