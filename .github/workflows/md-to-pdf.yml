@@ -21,21 +21,21 @@ jobs:
     name: Pandoc - markdown to pdf
     runs-on: ubuntu-latest
     container:
-      image: pandoc/core:2.9
+      image: pandoc/latex:2.9
       options: --cpus 1
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Setup pypandoc
-        run: |
-          apk add python3 texlive
-          python3 -m pip install pypandoc
+      #- name: Setup pypandoc
+      #  run: |
+      #    apk add python3 texlive
+      #    python3 -m pip install pypandoc
 
-      - name: Python converter
-        run: |
-          python3 converter.py ${{ inputs.markdown-source-dir }}
+      #- name: Python converter
+      #  run: |
+      #    python3 converter.py ${{ inputs.markdown-source-dir }}
 
       - name: Run pandoc
         run: |
