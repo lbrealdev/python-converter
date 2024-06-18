@@ -37,6 +37,7 @@ jobs:
 
       - name: Run pypandoc
         run: |
+          . pandoc/bin/activate
           python3 converter.py ${{ inputs.markdown-source-dir }}
 
       - name: Run pandoc
