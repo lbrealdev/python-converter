@@ -28,7 +28,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Setup pypandoc
+      - name: Setup python
         run: |
           apk add python3
           python3 -m pip install pypandoc
