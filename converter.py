@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 import sys
 from pathlib import Path
 import pypandoc
@@ -31,7 +33,6 @@ for markdown_file in markdown_files:
     pdf_output_path = DESTINATION_PATH_TO_PDF / relative_path.with_suffix(".pdf")
 
     pdf_output_path.parent.mkdir(parents=True, exist_ok=True)
-    #pdf_output_path.touch(exist_ok=True)
 
     source_md_files.append(markdown_file)
     output_pdf_files.append(pdf_output_path)
@@ -41,7 +42,10 @@ for markdown_file in markdown_files:
             str(markdown_file),
             'pdf',
             outputfile=str(pdf_output_path),
-            extra_args=['--pdf-engine=pdflatex']
+            extra_args=[
+                '--pdf-engine=pdflatex',
+                '--from=markdown+rebase_relative_paths'
+            ]
         )
     except Exception as e:
         print(f"Error converting {markdown_file}: {e}")
