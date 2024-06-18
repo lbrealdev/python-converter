@@ -31,7 +31,7 @@ jobs:
       - name: Setup python
         run: |
           apk add python3 py3-pip
-          pip3 install pypandoc
+          pip3 install pypandoc --break-system-packages
 
       - name: Run pypandoc
         run: |
