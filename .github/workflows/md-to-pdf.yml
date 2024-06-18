@@ -32,7 +32,6 @@ jobs:
         run: |
           apk add python3 texlive
           python3 -m pip install pypandoc
-       #   apk add python3 texmf-dist texlive
 
       - name: Python converter
         run: |
