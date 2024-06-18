@@ -31,8 +31,10 @@ jobs:
       - name: Setup python
         run: |
            apt-get -q --no-allow-insecure-repositories update
-           apt-get install python3 python3-pip -y
-           pip3 install pypandoc
+           apt-get install python3 -y
+           python -m venv pypandoc
+           . pypandoc/bin/activate
+           pip install pypandoc
       #    apk add python3 py3-pip
       #    python3 -m venv pandoc
       #    . pandoc/bin/activate
