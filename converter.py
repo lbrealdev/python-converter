@@ -42,7 +42,10 @@ for markdown_file in markdown_files:
             str(markdown_file),
             'pdf',
             outputfile=str(pdf_output_path),
-            extra_args=['--pdf-engine=pdflatex']
+            extra_args=[
+                '--pdf-engine=pdflatex',
+                '--from=markdown+rebase_relative_paths'
+            ]
         )
     except Exception as e:
         print(f"Error converting {markdown_file}: {e}")
