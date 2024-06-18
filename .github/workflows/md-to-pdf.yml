@@ -11,6 +11,10 @@ on:
         description: upload or not
         required: false
         type: boolean
+
+defaults:
+  run:
+    shell: bash
             
 jobs:
   md-to-pdf:
@@ -24,11 +28,12 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      #- name: Setup pypandoc
-      #  run: |
-      #    apk add python3 texmf-dist texlive
-      #    python3 --version
-      #    python3 -m pip install pypandoc
+      - name: Setup pypandoc
+        run: |
+          apk add python3 texlive
+       #   apk add python3 texmf-dist texlive
+       #   python3 --version
+       #   python3 -m pip install pypandoc
 
       #- name: Python converter
       #  run: |
@@ -37,7 +42,7 @@ jobs:
       - name: Run pandoc
         run: |
           pandoc README.md --from markdown --to html -o README.html
-          pandoc README.md --from markdown --to pdf -o README.pdf --pdf-engine=xelatex
+          pandoc README.md --from markdown --to pdf -o README.pdf --pdf-engine=pdflatex
 
       - name: Upload artifacts
         if: inputs.upload-artifact
