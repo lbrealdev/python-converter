@@ -31,6 +31,7 @@ jobs:
       - name: Setup python
         run: |
            apt-get -q --no-allow-insecure-repositories update
+           apt-get show python
       #    apk add python3 py3-pip
       #    python3 -m venv pandoc
       #    . pandoc/bin/activate
@@ -42,7 +43,7 @@ jobs:
 
       - name: Run pandoc
         run: |
-          pandoc --help
+          pandoc --version
           pandoc README.md --from markdown --to html -o README.html
           pandoc README.md --from markdown --to pdf -o README.pdf
 
