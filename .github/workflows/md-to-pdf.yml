@@ -31,7 +31,7 @@ jobs:
       - name: Setup python
         run: |
            apt-get -q --no-allow-insecure-repositories update
-           apt-get show python
+           apt-cache policy python
       #    apk add python3 py3-pip
       #    python3 -m venv pandoc
       #    . pandoc/bin/activate
