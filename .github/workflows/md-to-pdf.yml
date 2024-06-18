@@ -28,18 +28,23 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Setup python
-        run: |
-           apt-get -q --no-allow-insecure-repositories update
-           apt-get install python3 python3.12-venv -y
-           python3 -m venv pypandoc
-           . pypandoc/bin/activate
-           pip install pypandoc pypandoc-binary
+      #- name: Setup python
+      #  run: |
+      #     apt-get -q --no-allow-insecure-repositories update
+      #     apt-get install python3 python3.12-venv -y
+      #     python3 -m venv pypandoc
+      #     . pypandoc/bin/activate
+      #     pip install pypandoc pypandoc-binary
 
-      - name: Run pypandoc
-        run: |
-          . pypandoc/bin/activate
-          python3 converter.py ${{ inputs.markdown-source-dir }}
+      - name: Debug -- setup python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      #- name: Run pypandoc
+      #  run: |
+      #    . pypandoc/bin/activate
+      #    python3 converter.py ${{ inputs.markdown-source-dir }}
 
       - name: Run pandoc
         run: |
