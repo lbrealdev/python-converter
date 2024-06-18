@@ -36,15 +36,15 @@ jobs:
       #     . pypandoc/bin/activate
       #     pip install pypandoc pypandoc-binary
 
-      - name: Debug -- setup python
+      - name: Set up python
         uses: actions/setup-python@v5
         with:
           python-version: '3.12'
 
-      - name: Debug -- python
+      - name: Install python dependencies
         run: |
-          python3 --version
-          python3 -m pip list
+          python --version
+          python -m pip list
 
       #- name: Run pypandoc
       #  run: |
