@@ -24,25 +24,25 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Setup pypandoc
-        run: |
-          apk add python3 texmf-dist texlive
-          python3 --version
-          python3 -m pip install pypandoc
-
-      - name: Python converter
-        run: |
-          python3 converter.py ${{ inputs.markdown-source-dir }}
-
-      #- name: Run pandoc
+      #- name: Setup pypandoc
       #  run: |
-      #    pandoc README.md -o README.pdf
+      #    apk add python3 texmf-dist texlive
+      #    python3 --version
+      #    python3 -m pip install pypandoc
+
+      #- name: Python converter
+      #  run: |
+      #    python3 converter.py ${{ inputs.markdown-source-dir }}
+
+      - name: Run pandoc
+        run: |
+          pandoc README.md -o README.html
 
       - name: Upload artifacts
         if: inputs.upload-artifact
         uses: actions/upload-artifact@v4
         with:
           name: pdf
-          path: test/_output
+          path: "*.html"
 
 
