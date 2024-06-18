@@ -21,7 +21,7 @@ jobs:
     name: Pandoc - markdown to pdf
     runs-on: ubuntu-latest
     container:
-      image: pandoc/latex:2.9
+      image: pandoc/latex:3.2
       options: --cpus 1
 
     steps:
