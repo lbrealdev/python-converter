@@ -8,9 +8,13 @@ on:
         required: true
         type: string
       upload-artifact:
-        description: upload or not
+        description: upload artifact
         required: false
         type: boolean
+
+defaults:
+  run:
+    shell: sh
             
 jobs:
   md-to-pdf:
@@ -26,23 +30,26 @@ jobs:
 
       - name: Setup pypandoc
         run: |
-          apk add python3 texmf-dist texlive
-          python3 --version
+          apk add python3 texlive
           python3 -m pip install pypandoc
 
       - name: Python converter
         run: |
           python3 converter.py ${{ inputs.markdown-source-dir }}
 
-      #- name: Run pandoc
-      #  run: |
-      #    pandoc README.md -o README.pdf
+      - name: Run pandoc
+        run: |
+          pandoc README.md --from markdown --to html -o README.html
+          pandoc README.md --from markdown --to pdf -o README.pdf --pdf-engine=pdflatex
 
       - name: Upload artifacts
         if: inputs.upload-artifact
         uses: actions/upload-artifact@v4
         with:
-          name: pdf
-          path: test/_output
-
+          name: pandoc-artifact
+          path: |
+            README.html
+            README.pdf
+            test/_output/
+          retention-days: 3
 
