@@ -41,6 +41,7 @@ jobs:
         run: |
           pandoc README.md --from markdown --to html -o README.html
           pandoc README.md --from markdown --to pdf -o README.pdf --pdf-engine=pdflatex
+       #   pandoc README.md --from markdown --to pdf -o README.pdf
 
       - name: Upload artifacts
         if: inputs.upload-artifact
