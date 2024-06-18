@@ -30,13 +30,12 @@ jobs:
 
       - name: Setup pypandoc
         run: |
-          type -a python
-       #   apk add python3 texlive
-       #   python3 -m pip install pypandoc
+          apk add python3
+          python3 -m pip install pypandoc
 
-      #- name: Python converter
-      #  run: |
-      #    python3 converter.py ${{ inputs.markdown-source-dir }}
+      - name: Run pypandoc
+        run: |
+          python3 converter.py ${{ inputs.markdown-source-dir }}
 
       - name: Run pandoc
         run: |
