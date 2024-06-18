@@ -32,9 +32,6 @@ jobs:
         run: |
            apt-get -q --no-allow-insecure-repositories update
            apt-get install python3 python3.12-venv -y
-           python3 -m venv pypandoc
-           . pypandoc/bin/activate
-           pip install pypandoc
       #    apk add python3 py3-pip
       #    python3 -m venv pandoc
       #    . pandoc/bin/activate
@@ -42,7 +39,9 @@ jobs:
 
       - name: Run pypandoc
         run: |
-          . pypandoc/bin/activate
+          python3 -m venv pypandoc
+           . pypandoc/bin/activate
+          pip install pypandoc
           python3 converter.py ${{ inputs.markdown-source-dir }}
 
       - name: Run pandoc
