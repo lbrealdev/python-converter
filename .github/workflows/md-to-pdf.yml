@@ -41,9 +41,10 @@ jobs:
         with:
           python-version: '3.12'
 
-      - name: Debug -- python version
+      - name: Debug -- python
         run: |
           python3 --version
+          python3 -m pip list
 
       #- name: Run pypandoc
       #  run: |
