@@ -8,7 +8,7 @@ on:
         required: true
         type: string
       upload-artifact:
-        description: upload or not
+        description: upload artifact
         required: false
         type: boolean
 
