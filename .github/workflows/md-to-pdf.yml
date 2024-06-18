@@ -32,7 +32,7 @@ jobs:
         run: |
            apt-get -q --no-allow-insecure-repositories update
            apt-get install python3 -y
-           python -m pip install pypandoc
+           python3 -m pip install pypandoc
       #    apk add python3 py3-pip
       #    python3 -m venv pandoc
       #    . pandoc/bin/activate
