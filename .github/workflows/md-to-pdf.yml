@@ -50,6 +50,6 @@ jobs:
           path: |
             README.html
             README.pdf
-            test/_output/
+            ../../_output/
 
 
