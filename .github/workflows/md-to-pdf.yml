@@ -30,7 +30,7 @@ jobs:
 
       - name: Setup python
         run: |
-          apk add python3
+          apk add python3 py-pip
           python3 -m pip install pypandoc
 
       - name: Run pypandoc
