@@ -30,8 +30,7 @@ jobs:
 
       - name: Setup python
         run: |
-           uname -a
-           apt-get install python
+           apt-get install python3.12
       #    apk add python3 py3-pip
       #    python3 -m venv pandoc
       #    . pandoc/bin/activate
