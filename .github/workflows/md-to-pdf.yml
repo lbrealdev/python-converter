@@ -41,6 +41,10 @@ jobs:
         with:
           python-version: '3.12'
 
+      - name: Debug -- python version
+        run: |
+          python3 --version
+
       #- name: Run pypandoc
       #  run: |
       #    . pypandoc/bin/activate
