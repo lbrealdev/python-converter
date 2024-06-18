@@ -50,6 +50,7 @@ jobs:
           path: |
             README.html
             README.pdf
-            ../../_output/
+            ${{ github.workspace }}/**/_output/
+          retention-days: 3
 
 
