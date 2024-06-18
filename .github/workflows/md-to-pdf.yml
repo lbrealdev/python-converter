@@ -28,10 +28,11 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      #- name: Setup pypandoc
-      #  run: |
-      #    apk add python3 texlive
-      #    python3 -m pip install pypandoc
+      - name: Setup pypandoc
+        run: |
+          type -a python
+       #   apk add python3 texlive
+       #   python3 -m pip install pypandoc
 
       #- name: Python converter
       #  run: |
@@ -40,8 +41,7 @@ jobs:
       - name: Run pandoc
         run: |
           pandoc README.md --from markdown --to html -o README.html
-          pandoc README.md --from markdown --to pdf -o README.pdf --pdf-engine=pdflatex
-       #   pandoc README.md --from markdown --to pdf -o README.pdf
+          pandoc README.md --from markdown --to pdf -o README.pdf
 
       - name: Upload artifacts
         if: inputs.upload-artifact
