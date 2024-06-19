@@ -27,7 +27,7 @@ if not markdown_files:
 source_md_files = []
 output_pdf_files = []
 
-print("Convert MD to PDF:\n")
+print("converter from markdown to PDF\n")
 for markdown_file in markdown_files:
     relative_path = markdown_file.relative_to(SOURCE_PATH_TO_MD)
     pdf_output_path = DESTINATION_PATH_TO_PDF / relative_path.with_suffix(".pdf")
