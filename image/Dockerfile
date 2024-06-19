@@ -9,7 +9,7 @@ RUN apt-get update && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
-RUN mkdir /app && \
-    pip3 install pypandoc pypandoc-binary --break-system-packages
+RUN pip3 install pypandoc pypandoc-binary \ 
+    --break-system-packages
 
-ENTRYPOINT ["/usr/bin/python3"]
+ENTRYPOINT ["python3"]
