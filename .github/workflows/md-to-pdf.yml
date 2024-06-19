@@ -51,6 +51,7 @@ jobs:
           ls -lthr
           pwd
           echo "${{ github.workspace }}"
+          echo "$GITHUB_WORKSPACE"
 
       - name: Run pandoc
         run: |
