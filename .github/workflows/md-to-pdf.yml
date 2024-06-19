@@ -49,6 +49,7 @@ jobs:
       - name: Debug
         run: |
           ls -lthr
+          pwd
           echo "${{ github.workspace }}"
 
       - name: Run pandoc
