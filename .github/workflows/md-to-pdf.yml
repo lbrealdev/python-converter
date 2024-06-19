@@ -44,14 +44,12 @@ jobs:
       - name: Run pypandoc
         if: inputs.run-script
         run: |
-          python converter.py ${{ github.workspace }}/${{ inputs.markdown-source-dir }}
+          python converter.py $GITHUB_WORKSPACE/${{ inputs.markdown-source-dir }}
 
-      - name: Debug
-        run: |
-          ls -lthr
-          pwd
-          echo "${{ github.workspace }}"
-          echo "$GITHUB_WORKSPACE"
+      #- name: Debug
+      #  run: |
+      #    echo "${{ github.workspace }}"
+      #    echo "$GITHUB_WORKSPACE"
 
       - name: Run pandoc
         run: |
