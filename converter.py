@@ -23,6 +23,7 @@ markdown_files = list(SOURCE_PATH_TO_MD.rglob("*.md"))
 
 if not markdown_files:
     print(f"No markdown files found in {SOURCE_PATH_TO_MD}")
+    sys.exit(1)
 
 source_md_files = []
 output_pdf_files = []
