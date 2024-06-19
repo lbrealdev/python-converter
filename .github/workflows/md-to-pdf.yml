@@ -39,7 +39,7 @@ jobs:
 
       - name: Run pypandoc
         run: |
-          python converter.py ${{ inputs.markdown-source-dir }}
+          python converter.py ${{ github.workspace }}/${{ inputs.markdown-source-dir }}
 
       - name: Run pandoc
         run: |
