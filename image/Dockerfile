@@ -12,7 +12,4 @@ RUN apt-get update && \
 RUN mkdir /app && \
     pip3 install pypandoc pypandoc-binary --break-system-packages
 
-COPY ./entrypoint.sh /entrypoint.sh
-RUN chmod +x /entrypoint.sh
-
-ENTRYPOINT [ "/bin/bash", "-c", "bash /entrypoint.sh" ]
+ENTRYPOINT ["/usr/bin/python3"]
