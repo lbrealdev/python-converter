@@ -48,7 +48,7 @@ jobs:
 
       - name: Debug
         run: |
-          ls -lthr ${{ github.workspace }}/${{ inputs.markdown-source-dir }}
+          ls -lthr ${{ github.workspace }}
 
       - name: Run pandoc
         run: |
