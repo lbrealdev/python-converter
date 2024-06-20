@@ -16,19 +16,21 @@ if not SOURCE_PATH_TO_MD.exists() or not SOURCE_PATH_TO_MD.is_dir():
     print("Invalid path to markdown directory!")
     sys.exit(1)
 
-if not DESTINATION_PATH_TO_PDF.exists():
-    DESTINATION_PATH_TO_PDF.mkdir()
-
 markdown_files = list(SOURCE_PATH_TO_MD.rglob("*.md"))
 
 if not markdown_files:
     print(f"No markdown files found in {SOURCE_PATH_TO_MD}")
     sys.exit(1)
 
+if not DESTINATION_PATH_TO_PDF.exists():
+    DESTINATION_PATH_TO_PDF.mkdir()
+
 source_md_files = []
 output_pdf_files = []
 
-print("converter from markdown to PDF\n")
+print("Converter from markdown to PDF\n")
+print(f"Input directory: {SOURCE_PATH_TO_MD.absolute()}")
+print(f"Output directory: {DESTINATION_PATH_TO_PDF.absolute()}\n")
 for markdown_file in markdown_files:
     relative_path = markdown_file.relative_to(SOURCE_PATH_TO_MD)
     pdf_output_path = DESTINATION_PATH_TO_PDF / relative_path.with_suffix(".pdf")
@@ -41,12 +43,12 @@ for markdown_file in markdown_files:
     try:
         pypandoc.convert_file(
             str(markdown_file),
-            'pdf',
+            "pdf",
             outputfile=str(pdf_output_path),
             extra_args=[
-                '--pdf-engine=pdflatex',
-                '--from=markdown+rebase_relative_paths'
-            ]
+                "--pdf-engine=pdflatex",
+                "--from=markdown+rebase_relative_paths",
+            ],
         )
     except Exception as e:
         print(f"Error converting {markdown_file}: {e}")
@@ -54,8 +56,8 @@ for markdown_file in markdown_files:
 
 print("Source markdown files:")
 for input_md in source_md_files:
-    print(input_md)
+    print(input_md.absolute())
 
 print("\nOutput PDF files:")
 for output_pdf in output_pdf_files:
-    print(output_pdf)
+    print(output_pdf.absolute())
