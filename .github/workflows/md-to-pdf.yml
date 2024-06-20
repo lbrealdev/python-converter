@@ -11,6 +11,10 @@ on:
         description: upload artifact
         required: false
         type: boolean
+      run-script:
+        description: test converter script
+        required: true
+        type: boolean
 
 defaults:
   run:
@@ -38,8 +42,14 @@ jobs:
           python -m pip install pypandoc pypandoc-binary
 
       - name: Run pypandoc
+        if: inputs.run-script
         run: |
-          python converter.py ${{ inputs.markdown-source-dir }}
+          python converter.py $GITHUB_WORKSPACE/${{ inputs.markdown-source-dir }}
+
+      #- name: Debug
+      #  run: |
+      #    echo "${{ github.workspace }}"
+      #    echo "$GITHUB_WORKSPACE"
 
       - name: Run pandoc
         run: |
