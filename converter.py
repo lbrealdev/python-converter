@@ -1,13 +1,18 @@
 #!/usr/bin/env python
 
+import os
 import sys
 from pathlib import Path
 import pypandoc
+from pypandoc.pandoc_download import download_pandoc
 
 
 if len(sys.argv) < 2:
     print("Usage: python converter.py <path-to-markdown>")
     sys.exit(1)
+
+PANDOC_DOWNLOAD_PATH = "/usr/bin"
+os.environ.setdefault("PYPANDOC_PANDOC", "/usr/bin/pandoc")
 
 SOURCE_PATH_TO_MD = Path(sys.argv[1])
 DESTINATION_PATH_TO_PDF = Path(SOURCE_PATH_TO_MD) / "_output"
@@ -41,6 +46,7 @@ for markdown_file in markdown_files:
     output_pdf_files.append(pdf_output_path)
 
     try:
+        download_pandoc(targetfolder=PANDOC_DOWNLOAD_PATH)
         pypandoc.convert_file(
             str(markdown_file),
             "pdf",

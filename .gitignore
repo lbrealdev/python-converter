@@ -4,3 +4,6 @@ venv/
 
 # Output PDF path directory
 _output/
+
+# Ignore pandoc download binary
+*.deb
