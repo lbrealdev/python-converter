@@ -7,3 +7,9 @@ _output/
 
 # Ignore pandoc download binary
 *.deb
+
+# images
+*.jpg
+*.jpeg
+*.png
+*.xml

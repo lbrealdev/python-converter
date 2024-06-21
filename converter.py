@@ -16,6 +16,11 @@ os.environ.setdefault("PYPANDOC_PANDOC", "/usr/bin/pandoc")
 
 SOURCE_PATH_TO_MD = Path(sys.argv[1])
 DESTINATION_PATH_TO_PDF = Path(SOURCE_PATH_TO_MD) / "_output"
+GITHUB_AUTH_TOKEN = os.getenv("GITHUB_TOKEN")
+
+if not GITHUB_AUTH_TOKEN or GITHUB_AUTH_TOKEN is None:
+    print("Github authentication token is not set.")
+    sys.exit(1)
 
 if not SOURCE_PATH_TO_MD.exists() or not SOURCE_PATH_TO_MD.is_dir():
     print("Invalid path to markdown directory!")
@@ -53,7 +58,9 @@ for markdown_file in markdown_files:
             outputfile=str(pdf_output_path),
             extra_args=[
                 "--pdf-engine=pdflatex",
-                "--from=markdown+rebase_relative_paths",
+                "--from=markdown-implicit_figures+rebase_relative_paths",
+                f"--request-header=Authorization: token {GITHUB_AUTH_TOKEN}",
+                "--extract-media=.",
             ],
         )
     except Exception as e:
