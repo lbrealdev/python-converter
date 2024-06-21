@@ -5,14 +5,14 @@
 ![image-from-local](../img/XenPanda.jpg)
 
 ### IMAGE FROM PRIVATE REPOSITORY PNG
-[linux-png-image](https://raw.githubusercontent.com/lbrealdev/private-images/main/linux.png)
+![linux-png-image](https://raw.githubusercontent.com/lbrealdev/private-images/main/linux.png)
 
 ### IMAGE FROM PRIVATE REPOSITORY PNG
-[linux-png-image](https://raw.githubusercontent.com/lbrealdev/private-images/main/linux-tux.png)
+![linux-png-image](https://raw.githubusercontent.com/lbrealdev/private-images/main/linux-tux.png)
 
 ### IMAGE FROM PRIVATE REPOSITORY JPG
-[linux-png-image](https://raw.githubusercontent.com/lbrealdev/private-images/main/linux-tux-minimalism.jpg)
+![linux-png-image](https://raw.githubusercontent.com/lbrealdev/private-images/main/linux-tux-minimalism.jpg)
 
 ### IMAGE FROM PRIVATE REPOSITORY JPEG
-[linux-png-image](https://raw.githubusercontent.com/lbrealdev/private-images/main/linux-tux-cosmos.jpeg)
+![linux-png-image](https://raw.githubusercontent.com/lbrealdev/private-images/main/linux-tux-cosmos.jpeg)
 
