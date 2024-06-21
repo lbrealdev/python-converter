@@ -1,5 +1,18 @@
 # Test Python Pandoc
 
+
+### LOCAL IMAGE
 ![image-from-local](../img/XenPanda.jpg)
 
-![image-from-url](https://github.com/lbrealdev/private-images/blob/a423b8327a19584cc5492a5df8e81763557d92ac/XenPanda.jpg)
+### IMAGE FROM PRIVATE REPOSITORY PNG
+[linux-png-image](https://raw.githubusercontent.com/lbrealdev/private-images/main/linux.png)
+
+### IMAGE FROM PRIVATE REPOSITORY PNG
+[linux-png-image](https://raw.githubusercontent.com/lbrealdev/private-images/main/linux-tux.png)
+
+### IMAGE FROM PRIVATE REPOSITORY JPG
+[linux-png-image](https://raw.githubusercontent.com/lbrealdev/private-images/main/linux-tux-minimalism.jpg)
+
+### IMAGE FROM PRIVATE REPOSITORY JPEG
+[linux-png-image](https://raw.githubusercontent.com/lbrealdev/private-images/main/linux-tux-cosmos.jpeg)
+
