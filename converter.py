@@ -49,6 +49,10 @@ def convert_pandoc(input, output, auth: bool = False):
     pypandoc.convert_file(markdown, "pdf", outputfile=pdf, extra_args=args)
 
 
+# Set the environment variable GITHUB_TOKEN to github authenticate.
+# This variable must be set if the markdown files you want
+# convert to PDF contain images with URL image referencing an
+# image in a private repository.
 GITHUB_AUTH_TOKEN = os.getenv("GITHUB_TOKEN")
 GITHUB_AUTH = bool(GITHUB_AUTH_TOKEN)
 
@@ -57,10 +61,6 @@ GITHUB_AUTH = bool(GITHUB_AUTH_TOKEN)
 SOURCE_PATH_TO_MD = Path(sys.argv[1])
 DESTINATION_PATH_TO_PDF = Path(SOURCE_PATH_TO_MD) / "_output"
 
-# Set the environment variable GITHUB_TOKEN to github authenticate.
-# This variable must be set if the markdown files you want
-# convert to PDF contain images with URL image referencing an
-# image in a private repository.
 
 if not SOURCE_PATH_TO_MD.exists() or not SOURCE_PATH_TO_MD.is_dir():
     print("Invalid path to markdown directory!")
