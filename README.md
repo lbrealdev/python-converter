@@ -19,4 +19,5 @@ Pandoc source links:
 - [Pandoc Repository](https://github.com/jgm/pandoc)
 - [Pandoc Images](https://github.com/pandoc/dockerfiles)
 - [Pandoc GitHub Action](https://github.com/pandoc/pandoc-action-example)
+- [Pandoc Exit Codes](https://pandoc.org/MANUAL.html#exit-codes)
 
