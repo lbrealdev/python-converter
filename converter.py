@@ -2,22 +2,45 @@
 
 import os
 import sys
+import shutil
 from pathlib import Path
 import pypandoc
-from pypandoc.pandoc_download import download_pandoc
 
-
-PANDOC_BINARY_TARGET_PATH = "/usr/bin"
-PANDOC_DOWNLOAD_TARGET_PATH = "/tmp"
 
 if len(sys.argv) < 2:
     print("Usage: python converter.py <path-to-markdown>")
     sys.exit(1)
 
-os.environ.setdefault("PYPANDOC_PANDOC", f"{PANDOC_BINARY_TARGET_PATH}/pandoc")
+# install_pandoc function will run
+def install_pandoc():
+    pandoc_bin = shutil.which("pandoc")
+    if not pandoc_bin:
+        from pypandoc.pandoc_download import download_pandoc
+        
+        print("Pandoc binary was not found!")
+        
+        # Set the environment variable PYPANDOC_PANDOC 
+        # to the only location where pandoc will be searched
+        os.environ.setdefault("PYPANDOC_PANDOC", "/usr/bin/pandoc")
 
+        # Pandoc binary installation and download directory.
+        # /usr/bin & /tmp
+        bin_dir = Path(os.getenv("PYPANDOC_PANDOC")).parent
+        tmp_dir = Path(bin_dir.root) / "tmp"
+        
+        print(f"Downloading pandoc to {tmp_dir} and installing it in {bin_dir} ...")
+        download_pandoc(targetfolder=str(bin_dir), download_folder=str(tmp_dir))
+
+
+# Path to the directory where the markdown and
+# destination path that will be created '_output' for converted pdf files.
 SOURCE_PATH_TO_MD = Path(sys.argv[1])
 DESTINATION_PATH_TO_PDF = Path(SOURCE_PATH_TO_MD) / "_output"
+
+# Set the environment variable GITHUB_TOKEN to github authenticate.
+# This variable must be set if the markdown files you want
+# convert to PDF contain images with URL image referencing an
+# image in a private repository.
 GITHUB_AUTH_TOKEN = os.getenv("GITHUB_TOKEN")
 
 if not GITHUB_AUTH_TOKEN or GITHUB_AUTH_TOKEN is None:
@@ -29,6 +52,8 @@ if not SOURCE_PATH_TO_MD.exists() or not SOURCE_PATH_TO_MD.is_dir():
     sys.exit(1)
 
 markdown_files = list(SOURCE_PATH_TO_MD.rglob("*.md"))
+source_md_files = []
+output_pdf_files = []
 
 if not markdown_files:
     print(f"No markdown files found in {SOURCE_PATH_TO_MD}")
@@ -37,12 +62,11 @@ if not markdown_files:
 if not DESTINATION_PATH_TO_PDF.exists():
     DESTINATION_PATH_TO_PDF.mkdir()
 
-source_md_files = []
-output_pdf_files = []
-
-print("Converter from markdown to PDF\n")
-print(f"Input directory: {SOURCE_PATH_TO_MD.absolute()}")
-print(f"Output directory: {DESTINATION_PATH_TO_PDF.absolute()}\n")
+print(f"Markdown input directory: {SOURCE_PATH_TO_MD.absolute()}")
+print(f"PDF output directory: {DESTINATION_PATH_TO_PDF.absolute()}")
+print(f"Markdown files found: {len(markdown_files)}")
+print()
+print("Converting markdown files to PDF ...\n")
 for markdown_file in markdown_files:
     relative_path = markdown_file.relative_to(SOURCE_PATH_TO_MD)
     pdf_output_path = DESTINATION_PATH_TO_PDF / relative_path.with_suffix(".pdf")
@@ -53,10 +77,7 @@ for markdown_file in markdown_files:
     output_pdf_files.append(pdf_output_path)
 
     try:
-        download_pandoc(
-            targetfolder=PANDOC_BINARY_TARGET_PATH,
-            download_folder=PANDOC_DOWNLOAD_TARGET_PATH
-        )
+        install_pandoc()
         pypandoc.convert_file(
             str(markdown_file),
             "pdf",
@@ -69,7 +90,7 @@ for markdown_file in markdown_files:
             ],
         )
     except Exception as e:
-        print(f"Error converting {markdown_file}: {e}")
+        print(f"Error converting {markdown_file.absolute()}: {e}")
         sys.exit(1)
 
 print("Source markdown files:")
