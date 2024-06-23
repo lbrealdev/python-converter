@@ -28,7 +28,7 @@ def install_pandoc():
         bin_dir = Path(os.getenv("PYPANDOC_PANDOC")).parent
         tmp_dir = Path(bin_dir.root) / "tmp"
 
-        print(f"Downloading pandoc to {tmp_dir} and installing it in {bin_dir} ...")
+        print(f"Downloading pandoc to {tmp_dir} and installing it in {bin_dir} ...\n")
         download_pandoc(targetfolder=str(bin_dir), download_folder=str(tmp_dir))
 
 
@@ -77,6 +77,8 @@ if not markdown_files:
 if not DESTINATION_PATH_TO_PDF.exists():
     DESTINATION_PATH_TO_PDF.mkdir()
 
+install_pandoc()
+
 print(f"Markdown input directory: {SOURCE_PATH_TO_MD.absolute()}")
 print(f"PDF output directory: {DESTINATION_PATH_TO_PDF.absolute()}")
 print(f"Markdown files found: {len(markdown_files)}")
@@ -92,7 +94,6 @@ for markdown_file in markdown_files:
     output_pdf_files.append(pdf_output_path)
 
     try:
-        install_pandoc()
         convert_pandoc(input=markdown_file, output=pdf_output_path, auth=GITHUB_AUTH)
     except Exception as e:
         print(f"Error converting {markdown_file.absolute()}: {e}")
