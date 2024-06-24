@@ -21,3 +21,7 @@
 
 ![linux-png-image](https://raw.githubusercontent.com/lbrealdev/private-images/main/linux-tux-cosmos.jpeg)
 
+
+### IMAGE FROM PRIVATE REPOSITORY JPEG
+
+[comment]: <> (![linux-png-image](https://github.com/repo/images/main/asset/linux-tux-cosmos.jpeg))

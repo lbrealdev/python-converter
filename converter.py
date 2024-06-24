@@ -5,6 +5,7 @@ import sys
 import shutil
 from pathlib import Path
 import pypandoc
+import re
 
 
 if len(sys.argv) < 2:
@@ -49,6 +50,21 @@ def convert_pandoc(input, output, auth: bool = False):
     pypandoc.convert_file(markdown, "pdf", outputfile=pdf, extra_args=args)
 
 
+def search_markdown(path):
+    pattern = r'!\[.*?\]\((.*?)\)'
+    filter_pattern = r'/asset/'
+
+    for file in path.rglob("*.md"):
+        with file.open("r", encoding="utf-8") as f:
+            content = f.read()
+
+            matches = re.findall(pattern, content)
+
+            assest_urls = [match for match in matches if re.search(filter_pattern, match)]
+
+            for url in assest_urls:
+                print(url)
+
 # Set the environment variable GITHUB_TOKEN to github authenticate.
 # This variable must be set if the markdown files you want
 # convert to PDF contain images with URL image referencing an
@@ -77,7 +93,10 @@ if not markdown_files:
 if not DESTINATION_PATH_TO_PDF.exists():
     DESTINATION_PATH_TO_PDF.mkdir()
 
-install_pandoc()
+#install_pandoc()
+
+search_markdown(SOURCE_PATH_TO_MD)
+sys.exit(1)
 
 print(f"Markdown input directory: {SOURCE_PATH_TO_MD.absolute()}")
 print(f"PDF output directory: {DESTINATION_PATH_TO_PDF.absolute()}")
