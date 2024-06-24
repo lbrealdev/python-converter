@@ -21,3 +21,10 @@ Pandoc source links:
 - [Pandoc GitHub Action](https://github.com/pandoc/pandoc-action-example)
 - [Pandoc Exit Codes](https://pandoc.org/MANUAL.html#exit-codes)
 
+### Related tools
+
+- [mdtopdf](https://github.com/mandolyte/mdtopdf)
+- [Quarto](https://github.com/quarto-dev/quarto)
+- [mdp](https://github.com/visit1985/mdp)
+- [revealjs](https://github.com/hakimel/reveal.js)
+
