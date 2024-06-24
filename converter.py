@@ -25,8 +25,8 @@ def install_pandoc():
         os.environ.setdefault("PYPANDOC_PANDOC", "/usr/bin/pandoc")
 
         # Pandoc binary installation and download directory.
-        bin_dir = Path(os.getenv("PYPANDOC_PANDOC")).parent
-        tmp_dir = Path(bin_dir.root) / "tmp"
+        bin_dir = Path(os.path.join(os.sep, "usr", "bin"))
+        tmp_dir = Path(os.path.join(os.sep, "tmp"))
 
         print(f"Downloading pandoc to {tmp_dir} and installing it in {bin_dir} ...\n")
         download_pandoc(targetfolder=str(bin_dir), download_folder=str(tmp_dir))
