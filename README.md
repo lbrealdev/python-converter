@@ -21,7 +21,7 @@ Pandoc source links:
 - [Pandoc GitHub Action](https://github.com/pandoc/pandoc-action-example)
 - [Pandoc Exit Codes](https://pandoc.org/MANUAL.html#exit-codes)
 
-### Related tools
+### Pandoc related tools
 
 - [mdtopdf](https://github.com/mandolyte/mdtopdf)
 - [Quarto](https://github.com/quarto-dev/quarto)
