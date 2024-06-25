@@ -31,4 +31,4 @@ test comment
 [comment002]: <> (![linux-png-image](https://github.com/repo/images/main/asset/linux-tux-cosmos.jpeg))
 
 
-[comment003]: <> (![linux-png-image](https://raw.githubusercontent.com/lbrealdev/private-images/main/linux-tux-cosmos.jpeg))
+<!--- (![linux-png-image](https://raw.githubusercontent.com/lbrealdev/private-images/main/linux-tux-cosmos.jpeg)) ---!>
