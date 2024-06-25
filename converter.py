@@ -91,7 +91,7 @@ def search_markdown(path):
                 f.writelines(new_lines)
                 
     if md_pattern_found and not md_with_comment:
-        print("Markdown image URL element found, editing file to convert !")
+        print("Markdown image URL element found, editing file to convert!")
         print()
     if not md_pattern_found and md_with_comment:
         print(f"The markdown file already has comments in asset references, nothing to do!")
