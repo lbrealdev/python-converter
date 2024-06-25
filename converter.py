@@ -51,19 +51,51 @@ def convert_pandoc(input, output, auth: bool = False):
 
 
 def search_markdown(path):
-    pattern = r'!\[.*?\]\((.*?)\)'
-    filter_pattern = r'/asset/'
+    md_element_image_url_pattern = r"^[!]?\[.*?\]\((https:\/\/[^\)]+\.(?:png|jpg|jpeg|gif|bmp|svg))\)"
+    md_url_asset_pattern = r'/asset/'
+    md_comment_pattern = r"\[.*?\]: <>"
+
+    md_pattern_found = False
+    md_with_comment = False
 
     for file in path.rglob("*.md"):
         with file.open("r", encoding="utf-8") as f:
-            content = f.read()
+            lines = f.readlines()
 
-            matches = re.findall(pattern, content)
+        new_lines = []
+        count = 1
 
-            assest_urls = [match for match in matches if re.search(filter_pattern, match)]
+        for line in lines:
+            if re.search(md_comment_pattern, line):
+                md_with_comment = True
 
-            for url in assest_urls:
-                print(url)
+        if md_with_comment:
+            break
+
+        for line in lines:
+            match_pattern = re.match(md_element_image_url_pattern, line)
+            if match_pattern:
+                asset = match_pattern.group(0)
+                if re.search(md_url_asset_pattern, asset):
+                    new_comment_pattern = f"[comment{count:03}]: <> ({asset})\n"
+                    update_string = re.sub(md_element_image_url_pattern, new_comment_pattern, asset)
+                    new_lines.append(update_string)
+                    md_pattern_found = True
+                    count += 1
+                else:
+                    new_lines.append(line)
+            else:
+                new_lines.append(line)
+            
+            with file.open("w", encoding="utf-8") as f:
+                f.writelines(new_lines)
+                
+    if md_with_comment:
+        print(f"Markdown comment was found: {md_with_comment}")
+    if md_pattern_found:
+        print(f"Markdown pattern was found: {md_pattern_found}")
+    else:
+        print("Nothing to do!")
 
 # Set the environment variable GITHUB_TOKEN to github authenticate.
 # This variable must be set if the markdown files you want
@@ -93,10 +125,8 @@ if not markdown_files:
 if not DESTINATION_PATH_TO_PDF.exists():
     DESTINATION_PATH_TO_PDF.mkdir()
 
-#install_pandoc()
-
+install_pandoc()
 search_markdown(SOURCE_PATH_TO_MD)
-sys.exit(1)
 
 print(f"Markdown input directory: {SOURCE_PATH_TO_MD.absolute()}")
 print(f"PDF output directory: {DESTINATION_PATH_TO_PDF.absolute()}")
