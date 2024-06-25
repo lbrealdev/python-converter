@@ -51,6 +51,7 @@ def convert_pandoc(input, output, auth: bool = False):
 
 
 def search_markdown(path):
+    #md_element_image_url_pattern = r"^[!]?\[.*?\]\((https:\/\/[^\)]+)\)"
     md_element_image_url_pattern = r"^[!]?\[.*?\]\((https:\/\/[^\)]+\.(?:png|jpg|jpeg|gif|bmp|svg))\)"
     md_url_asset_pattern = r'/asset/'
     #md_comment_pattern = r"\[.*?\]: <>"
