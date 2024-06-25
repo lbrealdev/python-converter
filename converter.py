@@ -90,11 +90,13 @@ def search_markdown(path):
             with file.open("w", encoding="utf-8") as f:
                 f.writelines(new_lines)
                 
-    if md_with_comment:
-        print(f"Markdown comment was found: {md_with_comment}")
-    if md_pattern_found:
-        print(f"Markdown pattern was found: {md_pattern_found}")
-    else:
+    if md_pattern_found and not md_with_comment:
+        print("Markdown image URL element found, editing file to convert !")
+        print()
+    if not md_pattern_found and md_with_comment:
+        print(f"The markdown file already has comments in asset references, nothing to do!")
+        print()
+    if not md_pattern_found and not md_with_comment:
         pass
 
 # Set the environment variable GITHUB_TOKEN to github authenticate.
