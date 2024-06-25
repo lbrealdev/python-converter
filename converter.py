@@ -95,7 +95,7 @@ def search_markdown(path):
     if md_pattern_found:
         print(f"Markdown pattern was found: {md_pattern_found}")
     else:
-        print("Nothing to do!")
+        pass
 
 # Set the environment variable GITHUB_TOKEN to github authenticate.
 # This variable must be set if the markdown files you want
