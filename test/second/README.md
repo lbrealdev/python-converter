@@ -24,8 +24,8 @@
 
 ### IMAGE FROM PRIVATE REPOSITORY JPEG
 
-[comment]: <> (![linux-png-image](https://github.com/repo/images/main/asset/linux-tux-cosmos.jpeg))
+[comment001]: <> (![linux-png-image](https://github.com/repo/images/main/asset/linux-tux-cosmos.jpeg))
 
-[comment]: <> (test comment)
+test comment
 
-[comment]: <> (![linux-png-image](https://github.com/repo/images/main/asset/linux-tux-cosmos.jpeg))
+[comment002]: <> (![linux-png-image](https://github.com/repo/images/main/asset/linux-tux-cosmos.jpeg))
