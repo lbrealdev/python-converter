@@ -23,8 +23,11 @@ Pandoc source links:
 
 ### Pandoc related tools
 
+- [typst](https://github.com/typst/typst)
 - [mdtopdf](https://github.com/mandolyte/mdtopdf)
-- [Quarto](https://github.com/quarto-dev/quarto)
+- [quarto](https://github.com/quarto-dev/quarto)
 - [mdp](https://github.com/visit1985/mdp)
 - [revealjs](https://github.com/hakimel/reveal.js)
+- [showman](https://github.com/ntjess/showman)
+- [mermaid-cli](https://github.com/mermaid-js/mermaid-cli)
 
